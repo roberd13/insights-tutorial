@@ -53,7 +53,7 @@ The compose yaml will mount volumes to the promethius and grafana containers usi
 Now we need to configure the dse container to send metrics to promethius. To do this we have a preconfigured promethius.conf file you downloaded earlier.  We need to copy this to the container .
 
 ```
-docker cp promethius.conf dse-server:/opt/dse/resources/dse/collectd/etc/collectd/promethius.conf
+docker cp prometheus.conf dse-server:/opt/dse/resources/dse/collectd/etc/collectd/prometheus.conf
 ```
 
 Now we need to stop and restart the metrics collecton
