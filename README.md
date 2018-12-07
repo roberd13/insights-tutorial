@@ -29,8 +29,13 @@ To get the demo data, I have created a script [insights.sh](https://github.com/r
 Download the script using the following command 
 
 ```
-wget -L https://raw.githubusercontent.com/roberd13/insights-tutorial/master/insights.sh -O insights.yaml && chmod +x insights.yaml
+wget -L https://raw.githubusercontent.com/roberd13/insights-tutorial/master/insights.sh -O insights.sh && chmod +x insights.sh
+```
 
+Run the script to download the demo data.
+
+```
+./insights.sh
 ```
 
 ## Starting the Containers
