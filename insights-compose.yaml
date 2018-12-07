@@ -45,3 +45,6 @@ services:
     ports:
       - "9042:9042"
       - "9103:9103"
+volumes:
+  grafana:
+  prometheus:
