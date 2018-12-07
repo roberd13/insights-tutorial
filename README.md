@@ -1,8 +1,8 @@
 # Insights Tutorial
 
-### In this simple tutorial we will walk through enabling the new [Metrics Collector](https://docs.datastax.com/en/dse/6.7/dse-dev/datastax_enterprise/tools/metricsCollector/mcIntroduction.html) in a DataStax Enterprise (DSE) 6.7 Docker Container, exporting the metrics to Promethius Docker Container and visualizing these metrics with a Grafana Docker container. 
+### In this simple tutorial we will walk through enabling the new [Metrics Collector](https://docs.datastax.com/en/dse/6.7/dse-dev/datastax_enterprise/tools/metricsCollector/mcIntroduction.html) in a DataStax Enterprise (DSE) 6.7 Docker Container, exporting the metrics to Prometheus Docker Container and visualizing these metrics with a Grafana Docker container. 
 
-This Tutorial was created using a DSE 6.7, Promethius 2.4.3 amd Grafana 5.3.2 containers .
+This Tutorial was created using a DSE 6.7, Prometheus 2.4.3 amd Grafana 5.3.2 containers .
 
 ## Prerequisites
 
@@ -46,11 +46,11 @@ Now start the containers using the downloaded insights-compose.yaml
 docker-compose -f insights-compose.yaml up -d 
 ```
 
-The compose yaml will mount volumes to the promethius and grafana containers using the files we downloaded.
+The compose yaml will mount volumes to the prometheus and grafana containers using the files we downloaded.
 
 ## Configuring DSE to send metrics
 
-Now we need to configure the dse container to send metrics to promethius. To do this we have a preconfigured promethius.conf file you downloaded earlier.  We need to copy this to the container .
+Now we need to configure the dse container to send metrics to prometheus. To do this we have a preconfigured prometheus.conf file you downloaded earlier.  We need to copy this to the container .
 
 ```
 docker cp prometheus.conf dse-server:/opt/dse/resources/dse/collectd/etc/collectd/prometheus.conf
@@ -70,5 +70,5 @@ docker exec -it dse-server dsetool insights_config --mode ENABLED_WITH_LOCAL_STO
 
 Everything should be up and running and you can now see the metrics using the preconfigured grafana dashboards by visiting 
 
-http://localhost:3000/dashboards
+http://localhost:3000/dashboards or http://docker-host-ip:3000/dashboards 
 
