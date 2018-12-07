@@ -2,11 +2,11 @@
 
 # Download the promethius configs
 
-mkdir promethius
+mkdir prometheus
 
-wget -L https://raw.githubusercontent.com/datastax/dse-metric-reporter-dashboards/master/prometheus/prometheus.yml -O promethius/prometheus.yml
+wget -L https://raw.githubusercontent.com/datastax/dse-metric-reporter-dashboards/master/prometheus/prometheus.yml -O prometheus/prometheus.yml
 # Download tg_dse.json preconfigured for insites tutorial
-wget -L https://raw.githubusercontent.com/roberd13/insights-tutorial/master/tg_dse.json -O promethius/tg_dse.json
+wget -L https://raw.githubusercontent.com/roberd13/insights-tutorial/master/tg_dse.json -O prometheus/tg_dse.json
 
 # Download the grafana configs
 
