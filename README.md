@@ -6,7 +6,7 @@ This Demo is created using a DSE 6.7, Prometheus 2.4.3 amd Grafana 5.3.2 contain
 
 ## Prerequisites
 
-* A computer running MacOSX, Linux or Linux Virtual Machine
+* A computer running MacOSX, Linux or a Linux Virtual Machine
 
 * Basic understanding of Docker images and containers. 
 
