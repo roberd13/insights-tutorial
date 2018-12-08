@@ -1,6 +1,6 @@
 # Insights Demo Using Docker Images
 
-### In this simple tutorial we will walk through enabling the new Metrics Collector in a DataStax Enterprise (DSE) 6.7 Docker Container, exporting the metrics to Prometheus Docker Container and visualizing these metrics with a Grafana Docker container.
+### In this simple Demo we will walk through enabling the new Metrics Collector in a DataStax Enterprise (DSE) 6.7 Docker Container, exporting the metrics to Prometheus Docker Container and visualizing these metrics with a Grafana Docker container.
 
 This Demo is created using a DSE 6.7, Prometheus 2.4.3 amd Grafana 5.3.2 containers .
 
