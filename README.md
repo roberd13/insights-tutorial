@@ -2,7 +2,7 @@
 
 ### In this simple Demo we will walk through enabling the new Metrics Collector in a DataStax Enterprise (DSE) 6.7 Docker Container, exporting the metrics to Prometheus Docker Container and visualizing these metrics with a Grafana Docker container.
 
-This Demo is created using a DSE 6.7, Prometheus 2.4.3 amd Grafana 5.3.2 containers .
+This Demo is created using a DSE 6.7, Prometheus 2.4.3 and Grafana 5.3.2 containers.
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ This Demo is created using a DSE 6.7, Prometheus 2.4.3 amd Grafana 5.3.2 contain
 
 * Docker Compose installed, see [Install Docker Compose](https://docs.docker.com/compose/install)
 
-* Our Docker Images are hosted on [Docker Hub](https://hub.docker.com/r/datastax/dse-server/). For documentation including configuration options, environment variables, and compose examples head over to our official [Docker Docs](https://docs.datastax.com/en/docker/doc/index.html?utm_campaign=Docker_Cus_2019&utm_medium=web&utm_source=docker&utm_term=&utm_content=Web_DocsDocker)
+* DataStax DSE Docker Images are hosted on [Docker Hub](https://hub.docker.com/r/datastax/dse-server/). For documentation including configuration options, environment variables, and compose examples head over to our official [Docker Docs](https://docs.datastax.com/en/docker/doc/index.html?utm_campaign=Docker_Cus_2019&utm_medium=web&utm_source=docker&utm_term=&utm_content=Web_DocsDocker)
 
 ## Getting Started
 
@@ -26,6 +26,8 @@ mkdir ~/insights && cd ~/insights
 ```
 
 ## Demo Data
+
+For this demo we will be using the preconfigured grafana dashboards found on the [DataStax DSE Metrics Reporter GitHub](https://github.com/datastax/dse-metric-reporter-dashboards) page.
 
 To get the demo data, I have created a simple script [insights.sh](https://github.com/roberd13/insights-tutorial/blob/master/insights.sh) to download all of the config files needed for this demo. This script will create the directory structure and download the files needed to be used with the volume mounts for the containers. 
 Download the script using the following command 
@@ -42,10 +44,10 @@ Run the script to download the demo data.
 
 ## Starting the Containers
 
-Now start the containers using the downloaded insights-compose.yaml 
+Next start the containers with `docker-compose` using the downloaded insights-compose.yaml 
 
 The insights-compose.yaml 
-* Pull the images from Docker Hub
+* Pulls the images from Docker Hub
 * Creates a bridged network for the containers to communicate on
 * Maps the volumes to containers with the files we downloaded
 * Publishes the ports for insights, prometheus and grafana
@@ -55,11 +57,9 @@ The insights-compose.yaml
 docker-compose -f insights-compose.yaml up -d 
 ```
 
-The compose yaml will mount volumes to the prometheus and grafana containers using the files we downloaded.
-
 ## Configuring DSE to send metrics
 
-Now we need to configure the dse container to send metrics to prometheus. To do this we have a preconfigured prometheus.conf file you downloaded earlier.  We need to copy this to the container .
+Now we need to configure the dse container to send metrics to prometheus. To do this we have a preconfigured prometheus.conf file you downloaded earlier.  We need to copy this to the DSE container.
 
 ```
 docker cp prometheus.conf dse-server:/opt/dse/resources/dse/collectd/etc/collectd/prometheus.conf
@@ -79,7 +79,7 @@ docker exec -it dse-server dsetool insights_config --mode ENABLED_WITH_LOCAL_STO
 
 It may take a few minutes for metrics to populate but everything should be up and running and you can now see the metrics using the preconfigured grafana dashboards by visiting 
 
-http://localhost:3000/dashboards or http://docker-host-ip:3000/dashboards 
+http://localhost:3000/dashboards or http://docker-host-ip:3000/dashboards if running on a remote host.
 
 ## Destroy the Demo
 
@@ -89,12 +89,12 @@ Destroying the demo is as simple as running the command
 docker-compose -f insights-compose.yaml down
 ```
 
-All the config files are still located on your host so if you decided to run the demo again, as long as you don't delete the data in ~/insights all you have to do is run the below command again from the ~/insights directory and you will be back where you were prior to destroying.
+All the config files are still located on your host so if you decided to run the demo again, as long as you do not delete the data in `~/insights` all you have to do is run the below command again from the `~/insights` directory and you will be back where you were prior to destroying.
 
 ```
 docker-compose -f insights-compose.yaml up -d 
 ```
 
-## What Next
+## Whats Next
 
-If you want more granular configuration details or how to configure for existing cluster check out our [Metrics Collector Documentation](https://docs.datastax.com/en/dse/6.7/dse-dev/datastax_enterprise/tools/metricsCollector/mcIntroduction.html)
+If you want more granular configuration details, using an existing promethius and grafana servers or instructions to configure metrics collector with existing clusters check out the offical DataStax [Metrics Collector Documentation](https://docs.datastax.com/en/dse/6.7/dse-dev/datastax_enterprise/tools/metricsCollector/mcIntroduction.html)
