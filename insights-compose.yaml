@@ -6,6 +6,7 @@ services:
   prometheus:
     networks:
       bridge:
+    container_name: dse-metric-dashboards_prometheus_1
     image: "prom/prometheus:v2.4.3"
     ports:
       - "9090:9090"
