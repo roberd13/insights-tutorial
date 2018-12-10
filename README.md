@@ -33,7 +33,8 @@ To get the demo data, I have created a simple script [insights.sh](https://githu
 Download the script using the following command 
 
 ```
-wget -L https://raw.githubusercontent.com/roberd13/insights-tutorial/master/insights.sh -O insights.sh && chmod +x insights.sh
+curl -o insights.sh https://raw.githubusercontent.com/roberd13/insights-tutorial/master/insights.sh && chmod +x insights.sh
+
 ```
 
 Run the script to download the demo data.
