@@ -1,6 +1,6 @@
 # Insights Demo Using Docker Images
 
-### In this simple Demo we will walk through enabling the new Metrics Collector in a DataStax Enterprise (DSE) 6.7 Docker Container, exporting the metrics to Prometheus Docker Container and visualizing these metrics with a Grafana Docker container.
+### In this simple Demo we will walk through enabling the new DSE Metrics Collector in a DataStax Enterprise (DSE) 6.7 Docker Container, exporting the metrics to a Prometheus Docker Container and visualizing these metrics with a Grafana Docker container.
 
 This Demo is created using a DSE 6.7, Prometheus 2.4.3 and Grafana 5.3.2 containers.
 
@@ -12,7 +12,7 @@ This Demo is created using a DSE 6.7, Prometheus 2.4.3 and Grafana 5.3.2 contain
 
 * Docker installed on your local system, see [Docker Installation Instructions](https://docs.docker.com/engine/installation/). 
 
-* Docker Compose installed, see [Install Docker Compose](https://docs.docker.com/compose/install)
+* Docker Compose installed, if running linux see [Install Docker Compose](https://docs.docker.com/compose/install)
 
 * DataStax DSE Docker Images are hosted on [Docker Hub](https://hub.docker.com/r/datastax/dse-server/). For documentation including configuration options, environment variables, and compose examples head over to our official [Docker Docs](https://docs.datastax.com/en/docker/doc/index.html?utm_campaign=Docker_Cus_2019&utm_medium=web&utm_source=docker&utm_term=&utm_content=Web_DocsDocker)
 
@@ -46,16 +46,16 @@ Run the script to download the demo data.
 
 Next start the containers with `docker-compose` using the downloaded insights-compose.yaml 
 
+```
+docker-compose -f insights-compose.yaml up -d 
+```
+
 The insights-compose.yaml 
 * Pulls the images from Docker Hub
 * Creates a bridged network for the containers to communicate on
 * Maps the volumes to containers with the files we downloaded
 * Publishes the ports for insights, prometheus and grafana
 * Creates an alias for the dse container to use as the address in our custom `tg_dse.json` 
-
-```
-docker-compose -f insights-compose.yaml up -d 
-```
 
 ## Configuring DSE to send metrics
 
