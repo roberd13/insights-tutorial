@@ -81,6 +81,8 @@ It may take a few minutes for metrics to populate but everything should be up an
 
 http://localhost:3000/dashboards or http://docker-host-ip:3000/dashboards if running on a remote host.
 
+![](https://github.com/roberd13/insights-tutorial/blob/master/metrics.png)
+
 ## Destroy the Demo
 
 Destroying the demo is as simple as running the command 
