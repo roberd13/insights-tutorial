@@ -16,14 +16,19 @@ This Demo is created using a DSE 6.7, Prometheus 2.4.3 and Grafana 5.3.2 contain
 
 * DataStax DSE Docker Images are hosted on [Docker Hub](https://hub.docker.com/r/datastax/dse-server/). For documentation including configuration options, environment variables, and compose examples head over to our official [Docker Docs](https://docs.datastax.com/en/docker/doc/index.html?utm_campaign=Docker_Cus_2019&utm_medium=web&utm_source=docker&utm_term=&utm_content=Web_DocsDocker)
 
-## Getting Starte
+## Demo Data
 
-To run this demo we need to first get the demo data, we do this by 
+To run this demo we need to first get the demo data, we do this by cloning the [DataStax DSE Metrics Reporter GitHub](https://github.com/datastax/dse-metric-reporter-dashboards) repo with the following command
 
-1. Cloning this repo.
-2. Unzip the repo.
-3. From a CLI cd to the demo directory  
+```
+curl -Lo dse-metric-reporter-dashboards-master.zip https://github.com/datastax/dse-metric-reporter-dashboards/archive/master.zip && unzip dse-metric-reporter-dashboards-master.zip
+```
 
+Now we need to cd to the demo directory 
+
+```
+cd dse-metric-reporter-dashboards-master/demo
+```
 
 ## Starting the Containers
 
